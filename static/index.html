@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/static/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Visualization AI Assistant</title>
+    
+    <!-- D3 and Vega Libraries -->
+    <script src="https://d3js.org/d3-dsv.v1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.30.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.21.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.26.0"></script>
+
+    <!-- Include Marked.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <h1 class="page-title">Data Visualization AI Assistant</h1>
+
+    <div class="upload_block">
+        <div class="upload_area">
+            Drag and drop a CSV file here or click to upload
+        </div>
+        <button id="preview-btn" class="app_button_1">Show Table Preview</button>
+    </div>
+
+    <div class="chat_window">
+        <ul class="messages" id="response-text">
+            <!-- Responses will appear here -->
+        </ul>
+        
+        <div class="bottom_wrapper">
+            <input type="text" id="prompt-input" placeholder="Type your message here...">
+            <button id="send-btn" class="app_button_1" disabled>Send</button>
+            <button id="clear-messages-btn" class="app_button_1">Clear Messages</button>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

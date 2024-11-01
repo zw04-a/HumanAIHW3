@@ -1,0 +1,289 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #74904a;
+    font-family: 'Calibri', 'Roboto', sans-serif;
+}
+
+/* Add styling for the page title */
+.page-title {
+    text-align: center;
+    color: #337ab7;
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+/* Upload block styling */
+.upload_block {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+.upload_area {
+    border: 2px dashed #ccc;
+    padding: 40px;
+    border-radius: 10px;
+    color: #aaa;
+    margin-bottom: 10px;
+}
+
+/* Chat window styling */
+.chat_window {
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    background-color: #f5f4f4;
+    overflow: hidden;
+    margin-top: 20px; /* Added margin to move the chat window lower */
+}
+
+/* Hide the top menu as the title is now at the top */
+.top_menu {
+    display: none;
+}
+
+.messages {
+    position: relative;
+    list-style: none;
+    padding: 20px 10px 0 10px;
+    margin: 0;
+    height: 500px;
+    overflow: scroll;
+}
+
+.messages .message {
+    clear: both;
+    overflow: hidden;
+    margin-bottom: 20px;
+    transition: all 0.5s linear;
+    opacity: 0;
+} 
+
+.messages .message .avatar {
+    height: 40px;
+    width: 40px;
+    background-size: cover !important;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.messages .message .timestamp {
+    font-size: 10px;
+    font-weight: 300;
+    text-align: right;
+    margin-top: 5px;
+} 
+
+.messages .message.appeared {
+    opacity: 1;
+}
+
+.messages .message .text_wrapper {
+    display: inline-block;
+    padding: 20px;
+    border-radius: 6px;
+    min-width: 20px;
+    max-width: 80%;
+    position: relative;
+}
+
+.messages .message .text_wrapper::after,
+.messages .message .text_wrapper:before {
+    top: 18px;
+    border: solid transparent;
+    content: ' ';
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.messages .message .text_wrapper::after {
+    border-width: 13px;
+    margin-top: 0px;
+}
+
+.messages .message .text_wrapper::before {
+    border-width: 15px;
+    margin-top: -2px;
+}
+
+
+/* bot message */
+.messages .message.left .avatar {
+    float: left;
+    background: url('/static/bot_avatar.png');
+}
+
+.messages .message.left .text_wrapper {
+    background-color: #f3eeca;
+    margin-left: 20px;
+}
+
+.messages .message.left .text_wrapper::after,
+.messages .message.left .text_wrapper::before {
+    right: 100%;
+    border-right-color: #f3eeca;
+}
+
+.messages .message.left .timestamp {
+    color: #b0742f;
+}
+
+/* user message */
+.messages .message.right .avatar {
+    float: right;
+    background: url('/static/user_avatar.jpg');
+}
+
+.messages .message.right .text_wrapper {
+    background-color: #b0d4f3;
+    margin-right: 20px;
+    float: right;
+}
+
+.messages .message.right .text_wrapper::after,
+.messages .message.right .text_wrapper::before {
+    left: 100%;
+    border-left-color: #b0d4f3;
+}
+
+.messages .message.right .timestamp {
+    color: #1a5770;
+}
+
+/* text input from user */
+.bottom_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 25px;
+    padding: 10px 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+}
+
+#prompt-input {
+    width: 80%; /* The input takes most of the space */
+    border: none; /* Remove default border */
+    border-radius: 20px; /* Rounded corners for the input */
+    padding: 10px; /* Padding inside the input */
+    font-size: 16px; /* Font size for the text inside the input */
+    outline: none; /* Remove the blue outline when focused */
+}
+
+
+.app_button_1 {
+    height: 44px; /* Match height for both buttons */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #a3d063;
+    border-radius: 50px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 300;
+    text-align: center;
+    padding: 0 24px; /* Horizontal padding to prevent text wrapping */
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+/* FAQ section | right side */
+.panel-group {
+    margin: 20px;
+}
+
+.panel-heading [data-toggle='collapse']:after {
+    font-family: 'FontAwesome';
+    content: '\f054';
+    float: right;
+    font-size: 18px;
+    line-height: 22px;
+    transition: all 0.2s linear;
+    transform: rotate(-90deg);
+}
+
+.panel-heading [data-toggle='collapse'].collapsed:after {
+    transform: rotate(90deg);
+}
+
+/* Preview window styling */
+.preview-window {
+    position: fixed;
+    top: calc(40% + 35px); /* Move the window higher, adjust this value based on the red line */
+    left: 50%;
+    transform: translate(-50%, -40%); /* Adjust the vertical translation accordingly */
+    width: 60%;
+    max-height: 300px;
+    overflow-y: auto;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    z-index: 1000; /* Ensure it's on top */
+}
+
+.preview-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.preview-table th, .preview-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.preview-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+
+/* Update loading message styles */
+.message.loading {
+    opacity: 0.7;
+}
+
+.loading-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+}
+
+/* Update spinner styling */
+.spinner {
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+    flex-shrink: 0; /* Prevent spinner from shrinking */
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Remove the specific background color for loading state */
+.messages .message .text_wrapper.loading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: auto; 
+    min-width: 200px; 
+    max-width: 80%; 
+}

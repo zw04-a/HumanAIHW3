@@ -82,7 +82,7 @@ async def format_analysis_result(result: str) -> str:
         ]
         
         response = openai.chat.completions.create(
-            model="gpt-4o-mini",
+            model="gpt-3.5-turbo",
             messages=messages,
             temperature=0.3
         )
@@ -149,7 +149,7 @@ async def generate_data_analysis(query: str, df: pd.DataFrame = None) -> dict:
         ]
         
         response = openai.chat.completions.create(
-            model="gpt-4o-mini",
+            model="gpt-3.5-turbo",
             messages=messages,
             temperature=0
         )
@@ -235,7 +235,7 @@ async def generate_visualization(prompt: str, df: pd.DataFrame = None) -> dict:
         ]
 
         chat_completion = openai.chat.completions.create(
-            model="gpt-4o-mini",
+            model="gpt-3.5-turbo",
             messages=messages,
             temperature=0,
             max_tokens=1000,
@@ -497,7 +497,7 @@ Final Answer: [Clear explanation with the result]"""
             print_red(f"\n=== Iteration {iteration} Started ===")
 
             response = openai.chat.completions.create(
-                model="gpt-4o-mini",
+                model="gpt-3.5-turbo",
                 messages=messages,
                 tools=tools,
                 tool_choice="auto"
